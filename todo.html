@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+.container{
+    width: 100%;
+    min-height: 100vh;
+    padding: 10px;
+    /* justify-content: center; */
+    /* align-content: centerw; */
+    border: 2px solid red;
+    background:linear-gradient(135deg,#153677,#4e085f);
+}
+.todo-app{
+    width: 100%;
+    max-width: 540px;
+    background-color: aliceblue;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 50px;
+}
+.todo-app h1{
+    color: #002765;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+    background:#edeef0;
+}
+input{
+        flex: 1;
+        border:none;
+        outline: none;
+        background: transparent;
+        padding: 10px;
+        font-weight: 14px;
+}
+button{
+    border: none;
+    outline: none;
+    padding: 16px 50px;
+    border-radius: 40px;
+    background: #e09688;
+    color: #fff;
+    cursor: pointer;
+}
+ul li{
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+ul li  ::before{
+    content: '';
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    top: 12px;
+    left: 8px;
+}
+ul li.checked{
+    color: #555;
+    text-decoration: line-through;
+}  
+ul li.checked::before{
+    background-image: url(istockphoto-1366946900-1024x1024.jpg);
+}
+ul li span{
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 40px;
+    height:40px;
+    font-size: 22px;
+    color: #555;
+    line-height: 40px;
+    text-align: center;
+}
+ul li span:hover{
+    background: #edeef0;
+}</style>
+<body>
+    <div class="container">
+        <div class="todo-app"> <h1>To-Do List </h1>
+        <div class="list">
+            <input type="text" id="input-box" placeholder="Add your task">
+            <button onclick="addTask()">Add</button>
+        </div>
+        <ul id="list-container">
+            <!-- <li class="checked">Task 1</li>
+            <li>Task 2</li>
+            <li>Task 3</li> -->
+        </ul>
+    </div>            
+    </div>
+    <script>const inputBox = document.getElementById("input-box")
+        const listContainer = document.getElementById("list-container")
+        
+        function addTask(){
+            if(inputBox.value === '')
+            {
+                alert("you must write something!");
+            }
+            else{
+                let li = document.createElement("li");
+                li.innerHTML = inputBox.value;
+                listContainer.appendChild(li);
+                let span = document.createElement("span");
+                span.innerHTML = "\u00d7";
+                li.appendChild(span)
+            }
+            inputBox.value = "";
+        }
+        listContainer.addEventListener("click",function(e){
+            if(e.target.tagName === "Li"){
+                e.target.claasList.toggle("checked");
+                savedata();
+            }
+            else if(e.target.tagName === "SPAN"){
+                e.target.parentElement.remove();
+                savedata();
+            }
+            },false);
+            function savedata(){
+                localStorage.setItem("data",listContainer.innerHTML);
+            }
+            function ShowTask(){
+                listContainer.innerHTML = localStorage.getItem("data");
+            }
+            ShowTask();</script>
+</body>
+</html>
