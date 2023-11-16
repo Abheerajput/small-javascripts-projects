@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+*{
+margin: 0%;
+padding: 0%;
+box-sizing: border-box;
+font-family: sans-serif;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: rgb(233, 214, 185);
+}
+#main{
+    height: 100%;
+width: 100%;
+ background-color: rgb(233, 214, 185);
+position: relative;   
+}
+.elem{
+  height:150px ;
+  width: 100%;
+  background-color: rgb(103, 90, 97);
+  border-bottom: 3px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* position:relative; */
+}
+.elem h1{
+    font-size: 6vw;
+    position: relative;
+    color: white;
+    z-index: 9;
+    mix-blend-mode: difference;
+}
+.elem img{
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    object-position: center;
+    border-radius:50%;
+    position: absolute;
+    /* transform: translate(-50%,-50%); */
+    opacity: 0;
+    transition: all linear 0.3s;
+}
+    </style>
+<body>
+    <div id="main">
+        <div  class="elem"><h1>Lamborghini</h1><img src="https://images.unsplash.com/photo-1580414057403-c5f451f30e1c?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGFtYm9yZ2hpbml8ZW58MHx8MHx8fDA%3D" alt=""></div>
+        <div  class="elem"><h1> Rolls-Royce </h1><img src="https://images.unsplash.com/photo-1651915216584-5bb30a1cfa5a?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=""></div>
+        <div class="elem"><h1>Ferrari</h1><img src="https://images.unsplash.com/photo-1597687210367-a4915552d886?q=80&w=3734&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=""></div>
+        <div class="elem"><h1>Bantley</h1><img src="https://images.unsplash.com/photo-1631827741430-98c01f33e84f?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGJlbnRsZXl8ZW58MHx8MHx8fDA%3D" alt=""></div>
+    </div>
+    <script>
+        var abc =document.querySelectorAll(".elem");
+
+        abc.forEach(function(abhi) {
+                // console.log(abhi.childNodes[1]);
+            abhi.addEventListener("mouseenter",function(){
+                // console.log(abhi.childNodes[1]);
+                abhi.childNodes[1].style.opacity = 1
+        
+        });
+            abhi.addEventListener("mouseleave", function () {
+            abhi.childNodes[1].style.opacity = 0
+        });
+        abhi.addEventListener("mousemove", function (tan) {
+            abhi.childNodes[1].style.left = tan.x+"px"
+            abhi.childNodes[1].style.top = tan.y+"px"
+        });
+    });
+
+        
+        // elem1.addEventListener("mouseenter",function(abhi){
+        //     elemimg.style.opacity = 1;
+        //     // elemimg.style.top = abhi.y+"px";
+
+        // })
+        // elem1.addEventListener("mouseleave",function(abhi){
+        //     elemimg.style.opacity = 0;
+        //     // elemimg.style.top = abhi.y+"px";
+
+        // })
+
+    </script>
+</body>
+</html>
