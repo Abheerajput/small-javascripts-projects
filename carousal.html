@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    * {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+main {
+  height: 500px;
+  width: 60%;
+  box-shadow: 0px 0px 0px 3px grey;
+  margin: 0% 0% 0% 15%;
+  margin-top: 6%;
+  overflow: hidden;
+  /* position: absolute; */
+}
+.slide{
+    height: 62.5%;
+    width: 60%;
+    position: absolute;
+}
+
+</style>
+</head>
+<link rel="stylesheet" href="style.css">
+<body>
+    <main>
+        <img src="https://picsum.photos/id/237/600/900"   class="slide"  alt="">
+        <img src="https://picsum.photos/id/238/600/900"   class="slide"  alt="">
+        <img src="https://picsum.photos/id/239/600/900"   class="slide"  alt="">
+        <img src="https://picsum.photos/id/242/600/900"   class="slide"  alt="">
+    </main>
+    <script>
+        const slides=document.querySelectorAll(".slide")
+var counter=0;
+slides.forEach((slides,index)=>{
+    slides.computedStyleMap.left=`${index*100}%`
+})
+    </script>
+</body>
+</html>
